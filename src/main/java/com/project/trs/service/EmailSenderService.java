@@ -11,6 +11,7 @@ import org.thymeleaf.context.Context;
 
 @Service
 public class EmailSenderService {
+    private final String EMAIL = "upenn.trs@gmail.com";
     @Autowired
     private JavaMailSender mailSender;
     @Autowired
@@ -28,7 +29,7 @@ public class EmailSenderService {
             String htmlContent = templateEngine.process("activation-email.html", context);
 
             helper.setTo(toEmail);
-            helper.setFrom("ezhang1024@gmail.com");
+            helper.setFrom(EMAIL);
             helper.setSubject(subject);
             helper.setText(htmlContent, true);
             mailSender.send(mimeMessage);
@@ -49,7 +50,7 @@ public class EmailSenderService {
             String htmlContent = templateEngine.process("reset-password.html", context);
 
             helper.setTo(toEmail);
-            helper.setFrom("ezhang1024@gmail.com");
+            helper.setFrom(EMAIL);
             helper.setSubject(subject);
             helper.setText(htmlContent, true);
             mailSender.send(mimeMessage);
